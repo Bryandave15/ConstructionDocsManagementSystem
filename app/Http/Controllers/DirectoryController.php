@@ -69,53 +69,50 @@ class DirectoryController extends Controller
         }
     }
 
-    public function formUpdateForm(Request $request)
+    public function directoryUpdateForm(Request $request)
     {
-        $formFound = Form::where('form_id', $request->form_id)->first();
+        $directoryFound = Directory::where('directory_id', $request->directory_id)->first();
         
-        if ($formFound)
+        if ($directoryFound)
         {
-            return view('form.form-edit-form', compact('formFound'));
+            return view('directory.directory-edit-form', compact('directoryFound'));
 
         } else {
-            $errorMessage = "form ID invalid";
+            $errorMessage = "directory ID invalid";
             return view('errors.index', compact('errorMessage'));
         }
         echo'this good';
     }
 
-public function formUpdate(Request $request)
+public function directoryUpdate(Request $request)
 {
     $request->validate([
-        'form_title' => 'required|string|max:150',
-            'form_type' => 'required|string|max:100',
-            'description' => 'required|string|max:100',
-            'attachment.*' => 'required|file|mimes:jpeg,png,pdf,gif'
+        'fullname' => 'string|max:150',
+        'jobtitle' => 'string|max:100',
+        'email' => 'string|max:100',
+        'phone_number' => 'string|max:100',
+        'address' => 'string|max:100',
+        'company' => 'string|max:100',
     ]);
    
-    $form = Form::find($request->form_id);
+    $directory = Directory::find($request->directory_id);
     
-    if ($form) {
-        if ($request->hasFile('attachment')) {
-            $file = $request->file('attachment');
-            $filename = Auth::user()->id . '_' . time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path() . '/uploads/', $filename);
-            $form->attachment = $filename;
-        }
-        
-        $form->form_title = $request->form_title;
-        $form->form_type = $request->form_type;
-        $form->description = $request->description;
-        // return redirect("/form")->withSuccess('Product has been successfully updated');
-        // $structural->attachment = $request->attachment;
-        
-        $okSaved = $form->save();
-        // echo'this good 123';
-        // exit;
+    if ($directory) {
+
+        $directory->fullname = $request->fullname;
+        $directory->jobtitle = $request->jobtitle;
+        $directory->email = $request->email;
+        $directory->phone_number = $request->phone_number;
+        $directory->address = $request->address;
+        $directory->company = $request->company;
+       
+        $okSaved = $directory->save();
+ 
+
         if ($okSaved) {
-            return redirect("/form")->withSuccess('Product has been successfully updated');
+            return redirect("/directory")->withSuccess('Product has been successfully updated');
         } else {
-            return redirect("/form")->with('message', 'Error during the updating process');
+            return redirect("/directory")->with('message', 'Error during the updating process');
         }
     } else {
         $errorMessage = "Product ID invalid";
@@ -124,15 +121,15 @@ public function formUpdate(Request $request)
 }
 
 
-    public function formDelete(Request $request)
+    public function directoryDelete(Request $request)
     {
         if ($request->ajax()) { 
-            $form = Form::find($request->form_id);  
-            if ($form) {
-                $form->delete(); // Delete the record from the database
+            $directory = Directory::find($request->directory_id);  
+            if ($directory) {
+                $directory->delete(); // Delete the record from the database
                 return response()->json(['success' => true]); // Return a success response
             } else {
-                return response()->json(['success' => false, 'message' => 'form record not found']); // Return an error response
+                return response()->json(['success' => false, 'message' => 'directory record not found']); // Return an error response
             }
         } else {
             abort(404); // If the request is not AJAX, return a 404 error

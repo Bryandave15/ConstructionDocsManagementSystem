@@ -36,6 +36,24 @@
         background-color: #45a049;
     }
 
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        
+    }
+    h2 {
+        text-align : center;
+    }
+
     .alert {
         margin-bottom: 15px;
     }
@@ -70,6 +88,7 @@
 @endif
 
 <div class="form-container">
+<h2> <b> Add Form </b></h2>
     <form action="{{ route('form_Save') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="form_title">Title:</label><br>
@@ -86,6 +105,8 @@
 
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
+
+    <button class= "btn-danger">  <a href="/form"> Cancel  </button>
 </div>
 
 @endsection

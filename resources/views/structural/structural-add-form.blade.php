@@ -17,7 +17,7 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"], button {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -34,6 +34,15 @@
 
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        
+    }
+    h2 {
+        text-align : center;
     }
 
     .alert {
@@ -70,6 +79,7 @@
 @endif
 
 <div class="form-container">
+<h2> <b> Add Structural Drawing </b></h2>
     <form action="{{ route('structural_Save') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="structural_title">Structural Name:</label><br>
@@ -89,6 +99,7 @@
 
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
+    <button class= "btn-danger">  <a href="/structural"> Cancel  </button>
 </div>
 
 @endsection

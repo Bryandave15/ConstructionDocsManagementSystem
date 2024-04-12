@@ -17,7 +17,7 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"], button {
         width: calc(100% - 22px); /* Adjusted width to account for padding and border */
         padding: 10px;
         margin-bottom: 15px;
@@ -38,6 +38,17 @@
 
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
+    }
+
+    a {
+            text-decoration: none;
+            color: white;
+        }
+    h2 {
+        text-align : center;
+    }
+    button{
+        margin: 2px
     }
 
     .alert {
@@ -74,6 +85,7 @@
 @endif
 
 <div class="container">
+<h2> <b> Update Drawing</b></h2>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="form-container">
@@ -103,12 +115,15 @@
 
                     <div class="form-group">
                         @if (isset($structuralFound->attachment))
-                            <img width="50" height="50" src="{{ 'http://127.0.0.1:8000/uploads/'.$structuralFound->attachment }}" />
+                            <img width="50" height="50" src="{{ '/uploads/'.$structuralFound->attachment }}" />
                         @endif
                         <input type="file" id="attachment" name="attachment" class="form-control-file"><br>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="add-button">
+                    <button type="submit" class=" btn-primary">Submit</button>
+                    <button class= "btn-danger">  <a href="/structural"> Cancel  </button>
+                    </div>
                 </form> 
             </div>
         </div>

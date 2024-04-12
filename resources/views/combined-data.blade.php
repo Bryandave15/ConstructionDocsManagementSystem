@@ -4,138 +4,235 @@
 @section('content')
 
 <style>
+
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .recently-added {
+      background-color: white;
+      border: 1px solid darkblue;
+      letter-spacing:5px
+
+    }
+
     .main-container {
-        background-color: red;
+        padding: 10px;
         
     }
     .custom-card {
-        border: 1px solid black; /* Add border to cards */
-        border-radius: 0.25rem; /* Optional: Add border radius for better appearance */
-        height: 150px; /* Adjust the height of the cards */
-        background-color: orange
-    }
+    border: 1px solid darkblue; /* Add border to cards */
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 0.25rem; /* Optional: Add border radius for better appearance */
+    height: 150px; /* Adjust the height of the cards */
+    background-color: #FFFFFF; /* Set background color to white */
+   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+}
 
-    .rowcard1 {
-        margin-bottom: 10px;
-        margin-top: 10px
-    }
-    .rowcard2 {
-        margin-bottom: 10px;
-    }
+.card-title {
+    font-size: 2rem; /* Increase font size for card titles */
+    margin-bottom: 0.5rem; /* Add some space below the card title */
+    border-bottom: 1px solid black;
+    padding-bottom:10px;
+    padding-left:20px;
+    text: darkblue;
+    
+}
 
-    .table {
+.card-text {
+    font-size: 2rem; /* Set font size for card text */
+    padding-bottom:10px;
+    margin-bottom: 20px ; /* Remove margin below the card text */
+    border-bottom: 1px solid black;
+    text: darkblue;
+}
+
+.table {
         border: 1px solid black;
-    }
+}
+
+  
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+}
+
+.search-form{
+    width: 100%;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-group{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-input {
+    
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  
+}
+
+.search-button {
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.table-minimalist {
+    border: 2px solid darkgray;
+    background-color: lightgray;
+  }
+ 
+  .table-minimalist td {
+    border: 1px solid darkgray;
+    padding: 0.5rem;
+    text: darkgray;
+  }
+  .table-minimalist th {
+    font-weight: bold;
+    border-bottom: 1px solid darkgray;
+  }
+
 </style>
 
-<div class="mb-3">
-    <form id="searchForm" action="{{ route('combined-data.index') }}" method="GET" class="form-inline">
-        <input type="text" id="searchInput" name="search" class="form-control mr-sm-2" placeholder="Search" value="{{ $searchQuery }}">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-</div>
+<body>
 
-
-<Container class= "main-container ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 rowcard1" >
-                <div class="row">
-                    <!-- First column of cards -->
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                CARD1
-                                <h5 class="card-title">Mefps Count</h5>
-                                 <p class="card-text">{{ $mefpsCount }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                CARD2
-                                <h5 class="card-title">Struct Count</h5>
-                                 <p class="card-text">{{ $structuralCount }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                                CARD3
-                                <h5 class="card-title">Form Count</h5>
-                                 <p class="card-text">{{ $formCount }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Repeat this div structure for each card -->
+        <div class="search-bar">
+            <form id="searchForm" action="{{ route('combined-data.index') }}" method="GET" class="search-form">
+                <div class="input-group">
+                    <input type="text" id="searchInput" name="search" class="search-input" placeholder="Search" value="{{ $searchQuery }}">
+                    <button type="submit" class="search-button">Search</button>
                 </div>
-            </div>
+            </form>
+        </div>
 
-            <div class="col-md-12 rowcard2">
-                <div class="row">
-                    <!-- Second column of cards -->
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                               Card2A
-                               <h5 class="card-title">Meeting Count</h5>
-                                 <p class="card-text">{{ $meetingCount }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                               Card2A
-                               <h5 class="card-title">Report Count</h5>
-                                 <p class="card-text">{{ $reportCount }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card custom-card">
-                            <div class="card-body">
-                               Card2A
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Repeat this div structure for each card -->
+
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <a href="/mefps"><h5 class="card-title"> <b>Drawings</b></h5></a>
+                    
+                    <p class="card-text text-center">Total Drawing : {{ $mefpsCount + $structuralCount + $asbuiltCount + $architecturalCount }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['structural'] }} </p>
                 </div>
             </div>
         </div>
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+            <div class="card-body">
+                    <a href="/inspection"><h5 class="card-title"> <b>Inspection</b></h5></a>
+                    
+                    <p class="card-text text-center">Total Inspection : {{ $inspectionCount  }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['structural'] }} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <a href="/form"><h5 class="card-title"> <b>Forms</b></h5></a>
+                    
+                    <p class="card-text text-center">Forms Uploaded : {{ $formCount  }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['form'] }} </p>
+                </div>>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <a href="/meeting"><h5 class="card-title"> <b>Meetings</b></h5></a>
+                    
+                    <p class="card-text text-center"> Total Meetings Created : {{ $meetingCount  }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['meeting'] }} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+            <div class="card-body">
+                    <a href="/report"><h5 class="card-title"> <b>Reports</b></h5></a>
+                    
+                    <p class="card-text text-center"> Total Report Created : {{ $reportCount  }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['report'] }} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card custom-card">
+            <div class="card-body">
+                    <a href="/directory"><h5 class="card-title"> <b>Directory</b></h5></a>
+                    
+                    <p class="card-text text-center"> Total Personnel : {{ $directoryCount  }}  </p>
+
+                    <p  class="text-center">Latest Update: {{ $latestDates['directory'] }} </p>
+                </div>
+            </div>
+        </div>
+
+       
     </div>
-</Container>
+</div>
 
 
 <div class="container">
-<!-- Original Table -->
-<table id="originalTable" class="table table-responsive text-center">
-    <thead>
+
+  <div class="recently-added">
+    <h4 class="text-center"><b>Recently Added</b></h4>
+  </div>
+
+  <div class="table-responsive">
+    <table id="originalTable" class="table text-center table-minimalist">
+      <thead>
         <tr>
-            <th style="border: 1px solid black;">Title</th>
-            <th style="border: 1px solid black;">Code / Type</th>
-            <th style="border: 1px solid black;">Location / Description</th>
-            <th style="border: 1px solid black;">Created At</th>
-                            
+          <th style="border: 2px solid darkgray;">Title</th>
+          <th style="border: 2px solid darkgray;">Code / Type</th>
+          <th style="border: 2px solid darkgray;">Location / Description</th>
+          <th style="border: 2px solid darkgray;">Created At</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <!-- Display original table data here -->
         @foreach ($combinedData as $data)
         <tr>
-           
-            <td style="border: 1px solid black;">{{ $data['title'] }}</td>
-            <td style="border: 1px solid black;">{{ $data['code'] }}</td>
-            <td style="border: 1px solid black;">{{ $data['location'] }}</td>
-            <td style="border: 1px solid black;">{{ $data['created_at'] }}</td>
- 
+          <td>{{ $data['title'] }}</td>
+          <td>{{ $data['code'] }}</td>
+          <td>{{ $data['location'] }}</td>
+          <td>{{ $data['created_at'] }}</td>
         </tr>
         @endforeach
-    </tbody>
-</table>
-
+      </tbody>
+    </table>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="searchResultsModal" tabindex="-1" role="dialog" aria-labelledby="searchResultsModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -146,22 +243,30 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <table id="searchResultsTable" class="table">
-                    <thead>
-                        <tr>
-                           
-                            <th>Title</th>
-                            <th>Code / Type</th>
-                            <th>Location / Description</th>
-                            <th>Created At</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Search results will be populated here -->
-                    </tbody>
-                </table>
+            <div class="modal-body text-center">
+                @if ($searchResults->isEmpty())
+                    <p>No results found.</p>
+                @else
+                    <table id="searchResultsTable" class="table">
+                        <thead >
+                            <tr>
+                                <th class="text-center" >Title</th>
+                                <th class="text-center">Code / Type</th>
+                                <th class="text-center">Location / Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through search results and display the relevant columns -->
+                            @foreach ($searchResults as $data)
+                                <tr>
+                                    <td>{{ $data['title'] }}</td>
+                                    <td>{{ $data['code'] }}</td>
+                                    <td>{{ $data['location'] }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -171,29 +276,31 @@
 </div>
 </div>
 
+</body>
+
 <!-- JavaScript to trigger the modal and populate search results -->
 <script>
-    // When the document is ready
-    $(document).ready(function() {
-        // If the search input is not empty, show the modal with search results
-        @if (!empty($searchQuery))
-            $('#searchResultsModal').modal('show');
-        @endif
+            // When the document is ready
+        $(document).ready(function() {
+            // If the search input is not empty, show the modal with search results
+            @if (!empty($searchQuery))
+                $('#searchResultsModal').modal('show');
+            @endif
 
-        // Populate the search results table with data
-        var searchResults = @json($searchResults);
-        var tableBody = $('#searchResultsTable tbody');
-        $.each(searchResults, function(index, data) {
-            var row = $('<tr>').appendTo(tableBody);
-            $('<td>').text(data.id).appendTo(row);
-            $('<td>').text(data.title).appendTo(row);
-            $('<td>').text(data.code).appendTo(row);
-            $('<td>').text(data.location).appendTo(row);
-            $('<td>').text(data.created_at).appendTo(row);
-            $('<td>').text(data.updated_at).appendTo(row);
-            $('<td>').text(data.trade).appendTo(row);
-            $('<td>').text(data.attachment).appendTo(row);
+            // Check if the modal is shown
+            $('#searchResultsModal').on('shown.bs.modal', function () {
+                // Populate the search results table with data
+                var searchResults = @json($searchResults);
+                var tableBody = $('#searchResultsTable tbody');
+                // Clear the table body before populating it to avoid duplication
+                tableBody.empty();
+                $.each(searchResults, function(index, data) {
+                    var row = $('<tr>').appendTo(tableBody);
+                    $('<td>').text(data.title).appendTo(row);
+                    $('<td>').text(data.code).appendTo(row);
+                    $('<td>').text(data.location).appendTo(row);
+                });
+            });
         });
-    });
 </script>
 @endsection

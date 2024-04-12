@@ -17,7 +17,8 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"],
+{
         width: calc(100% - 22px); /* Adjusted width to account for padding and border */
         padding: 10px;
         margin-bottom: 15px;
@@ -26,7 +27,8 @@
         box-sizing: border-box;
     }
 
-    .form-container input[type="file"] {
+    .form-container input[type="file"],
+     {
         width: 100%; /* Full width for file input */
     }
 
@@ -36,8 +38,12 @@
         cursor: pointer;
     }
 
-    .form-container input[type="submit"]:hover {
-        background-color: #45a049;
+    .form-container input[type="submit"],button {
+        width: calc(40% - 5px);
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
     }
 
     .alert {
@@ -49,6 +55,21 @@
             width: 90%;
         }
     }
+
+    .add-button {
+    display: flex;
+    justify-content: space-around; /* Add space between the buttons */
+    }  
+
+    a {
+            text-decoration: none;
+            color: white;
+        }
+
+    h2 {
+        text-align : center;
+    }
+    
 </style>
 
 @if ($errors->any())
@@ -74,7 +95,9 @@
 @endif
 
 <div class="container">
+
     <div class="row justify-content-center">
+    <h2> <b> Update Report </b></h2>
         <div class="col-md-12">
             <div class="form-container">
                 <form action="{{ route('report_Update') }}" method="POST" enctype="multipart/form-data">
@@ -106,12 +129,16 @@
 
                     <div class="form-group">
                         @if (isset($reportFound->attachment))
-                            <img width="50" height="50" src="{{ 'http://127.0.0.1:8000/uploads/'.$reportFound->attachment }}" />
+                            <img width="50" height="50" src="{{ '/uploads/'.$reportFound->attachment }}" />
                         @endif
                         <input type="file" id="attachment" name="attachment" class="form-control-file"><br>
                     </div>
 
+                    <div class="add-button">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class= "btn-danger">  <a href="/report"> Cancel  </button>
+                    </div>
+
                 </form> 
             </div>
         </div>

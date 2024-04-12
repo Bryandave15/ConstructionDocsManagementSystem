@@ -15,6 +15,7 @@ class Meeting extends Model
     protected $fillable = [
         'meeting_title',
         'meeting_overview',
+        'meeting_date',
         'meeting_location',
         'meeting_agenda',
         'minutes_meeting',

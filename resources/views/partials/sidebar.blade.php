@@ -6,7 +6,7 @@
         <ul class="sidebar-menu">
 
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
-            <a href="{{ url('http://127.0.0.1:8000/combined-data') }}">
+            <a href="/combined-data">
                     <i class="fa fa-wrench"></i>
                     <span class="title">Dashboard</span>
                 </a>
@@ -50,7 +50,7 @@
          
 
               <li >
-                <a href="{{ url('http://127.0.0.1:8000/report') }}">
+                <a href="/report">
                     <i class="fa fa-reports"></i>
                     <span> Reports</span>
                 </a>
@@ -58,7 +58,7 @@
        
       
              <li >
-                <a href="http://127.0.0.1:8000/meeting">
+                <a href="/meeting">
                     <i class="fa fa-meetings"></i>
                     <span> Meetings</span>
                 </a>
@@ -66,7 +66,7 @@
            
 
             <li >
-            <a href="http://127.0.0.1:8000/form">
+            <a href="/form">
                     <i class="fa fa-reports"></i>
                     <span> Forms</span>
                 </a>
@@ -83,30 +83,40 @@
                 </a>
                 <ul class="treeview-menu text-center">
                  
-                    <li >
-                        <a href="http://127.0.0.1:8000/products">Products</a>
-                    </li>
+                    <!-- <li >
+                        <a href="products">Products</a>
+                    </li> -->
                     <li>
-                        <a href="http://127.0.0.1:8000/structural">Structural</a>
+                        <a href="structural">Structural</a>
                     </li> 
                     <li>
-                        <a href="http://127.0.0.1:8000/structural">Architectural</a>
+                        <a href="architectural">Architectural</a>
                     </li> 
                     <li>
-                        <a href="http://127.0.0.1:8000/mefps">MEFPS</a>
+                        <a href="mefps">MEFPS</a>
                     </li> 
                     <li>
-                        <a href="http://127.0.0.1:8000/structural">AS-BUILT</a>
+                        <a href="asbuilt">AS-BUILT</a>
                     </li> 
                 </ul>
             </li>
 
             <li >
-                <a href="http://127.0.0.1:8000/directory">
+            <a href="inspection">
+                    <i class="fa fa-reports"></i>
+                    <span> Inspection Test Results</span>
+                </a>
+            </li>
+
+            <li >
+                <a href="directory">
                     <i class="fa fa-directory"></i>
                     <span> Directory</span>
                 </a>
             </li>
+
+            
+
             
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
@@ -122,12 +132,7 @@
                 </a>
             </li>
 
-            <li >
-                <a href="http://127.0.0.1:8000/combined-data">
-                    <i class="fa fa-meetings"></i>
-                    <span> combine-data</span>
-                </a>
-            </li>
+          
            
         </ul>
     </section>

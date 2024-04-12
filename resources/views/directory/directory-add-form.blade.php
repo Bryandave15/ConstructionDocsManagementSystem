@@ -17,7 +17,8 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"],
+    .form-container input[type="number"], button {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -35,6 +36,16 @@
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
     }
+
+    a {
+        text-decoration: none;
+        color: white;
+        
+    }
+    h2 {
+        text-align : center;
+    }
+
 
     .alert {
         margin-bottom: 15px;
@@ -70,29 +81,32 @@
 @endif
 
 <div class="form-container">
+<h2> <b> Add Personnel </b></h2>
     <form action="{{ route('directory_Save') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label for="fullname">fullname:</label><br>
+        <label for="fullname">Fullname:</label><br>
         <input type="text" id="fullname" name="fullname"><br><br>
 
-        <label for="jobtitle">Type:</label><br>
+        <label for="jobtitle">Job Title:</label><br>
         <input type="text" id="jobtitle" name="jobtitle"><br><br>
 
-        <label for="email">email:</label><br>
+        <label for="email">Email:</label><br>
         <input type="text" id="email" name="email"><br><br>
 
 
-        <label for="phone_number">phone_number:</label><br>
+        <label for="phone_number">Phone Number:</label><br>
         <input type="number" id="phone_number" name="phone_number"><br><br>
 
-        <label for="address">address:</label><br>
+        <label for="address">Address:</label><br>
         <input type="text" id="address" name="address"><br><br>
 
-        <label for="company">company:</label><br>
+        <label for="company">Company:</label><br>
         <input type="text" id="company" name="company"><br><br>
 
         <input class="btn btn-primary" type="submit" value="Submit">
+        
     </form>
+    <button class= "btn-danger">  <a href="/directory"> Cancel  </button>
 </div>
 
 @endsection

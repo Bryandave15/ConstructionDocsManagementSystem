@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-    @include('partials.head')
 
+    <title>CMDS</title>
+    @include('partials.head')
+   
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

@@ -17,7 +17,7 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"], select {
+    .form-container input[type="submit"], select, button {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -34,6 +34,15 @@
 
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        
+    }
+    h2 {
+        text-align : center;
     }
 
     .alert {
@@ -70,9 +79,10 @@
 @endif
 
 <div class="form-container">
+<h2> <b> Add MEFPS Drawing </b></h2>
     <form action="{{ route('mefps_Save') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label for="mefps_title">MEFPS Name:</label><br>
+        <label for="mefps_title">Drawing Name:</label><br>
         <input type="text" id="mefps_title" name="mefps_title"><br><br>
 
         <label for="mefps_code">Code:</label><br>
@@ -83,11 +93,11 @@
 
         <label for="Trade">Trade:</label><br>
         <select type="text" id="trade" name="trade">
-            <option value="Computer">Mechanical</option>
-            <option value="Gadgets">Electrical</option>
-            <option value="MobilePhone">Fire Protection</option>
-            <option value="Games">Plumbing/Sanitary</option>
-            <option value="Games">Auxillary</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Fire Protection">Fire Protection</option>
+            <option value="Plumbing/Sanitary">Plumbing/Sanitary</option>
+            <option value="Auxillary">Auxillary</option>
         </select>
         <br><br>
         <label for="attachment">Attachment:</label><br>
@@ -95,6 +105,7 @@
 
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
+    <button class= "btn-danger">  <a href="/mefps"> Cancel  </button>
 </div>
 
 @endsection

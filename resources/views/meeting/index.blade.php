@@ -19,7 +19,7 @@
 <div style="display: flex; justify-content: space-around; border-bottom: 2px solid black; padding-bottom: 2px;">
     <h2 style="margin: 0; margin-right: 200px">Meetings</h2>
     <!-- Headline "FORMS" --> 
-    <a class="btn btn-primary"  href="http://127.0.0.1:8000/meeting-add-form"><b>Add Meeting</b></a>
+    <a class="btn btn-primary"  href="/meeting-add-form"><b>Add Meeting</b></a>
         <!-- Search input field -->
     <input type="text" id="searchInput" class="form-control" placeholder="Search... "style="width: 300px;">
 </div>
@@ -30,6 +30,7 @@
         <tr>
             <th style="border-bottom: 2px solid black;">Meeting Title</th>
             <th style="border-bottom: 2px solid black;">Meeting Overview</th>
+            <th style="border-bottom: 2px solid black;">Date</th>
             <th style="border-bottom: 2px solid black;">Location</th>
             <th style="border-bottom: 2px solid black;">Meeting Agenda</th>
             <th style="border-bottom: 2px solid black;">Minutes of Meeting</th>
@@ -44,6 +45,8 @@
 
     <td>{{ $d->meeting_title }}</td>
     <td>{{ $d->meeting_overview }}</td> 
+    <td>{{ $d->meeting_date }}</td> 
+
     <td>{{ $d->meeting_location }}</td> 
     <td>{{ $d->meeting_agenda }}</td>
     <td>{{ $d->minutes_meeting }}</td>  
@@ -55,7 +58,7 @@
     </td>
     <td>
         
-        <button id="butEdit" onclick="processEdit({{ $d->meeting_id }})" class="btn btn-success">Edit</button>
+        <button id="butEdit" onclick="processEdit({{ $d->meeting_id }})" class="btn btn-success">Update</button>
         <button id="butDelete" onclick="processDelete({{ $d->meeting_id }})" class="btn btn-danger">Delete</button>
         <button onclick="downloadAttachment('{{ $d->attachment }}')" class="btn btn-primary">Download</button>
         

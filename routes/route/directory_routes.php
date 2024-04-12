@@ -13,7 +13,7 @@ Route::get('/directory-add-form', [DirectoryController::class, 'directoryAddForm
 //route that recieves data from form
 Route::post('/directory-save', [DirectoryController::class, 'directorySave'])->name('directory_Save');
 Route::get('/directory-update-form/{directory_id}', [DirectoryController::class, 'directoryUpdateForm'])->name('directory_Update_Form');
-Route::post('/diretory-update', [DirectoryController::class, 'diretoryUpdate'])->name('directory_Update');
+Route::post('/directory-update', [DirectoryController::class, 'directoryUpdate'])->name('directory_Update');
 Route::post('/directory-del', [DirectoryController::class, 'directoryDelete'])->name('directory_Delete');
 
 Route::get('/directory-select/{directory_id}', [DirectoryController::class, 'directorySelectOne'])->name('directory_Select');

@@ -19,7 +19,7 @@
 <div style="display: flex; justify-content: space-around; border-bottom: 2px solid black; padding-bottom: 2px;">
     <h2 style="margin: 0; margin-right: 200px">Directory</h2>
     <!-- Headline "FORMS" --> 
-    <a class="btn btn-primary"  href="http://127.0.0.1:8000/directory-add-form"><b>Add Personnel</b></a>
+    <a class="btn btn-primary"  href="/directory-add-form"><b>Add Personnel</b></a>
         <!-- Search input field -->
     <input type="text" id="searchInput" class="form-control" placeholder="Search... "style="width: 300px;">
 </div>
@@ -50,7 +50,7 @@
     <td>{{ $d->company }}</td> 
     <td>
         
-        <button id="butEdit" onclick="processEdit({{ $d->directory_id }})" class="btn btn-success">Edit</button>
+        <button id="butEdit" onclick="processEdit({{ $d->directory_id }})" class="btn btn-success">Update</button>
         <button id="butDelete" onclick="processDelete({{ $d->directory_id }})" class="btn btn-danger">Delete</button>
         <button onclick="downloadAttachment('{{ $d->attachment }}')" class="btn btn-primary">Download</button>
         
@@ -75,58 +75,58 @@ $(document).ajaxStop(function() {
 });
 
 
-function processSearch(){
-    var search = document.getElementById('searchText').value;
-    if (search.length >= 0) {
+// function processSearch(){
+//     var search = document.getElementById('searchText').value;
+//     if (search.length >= 0) {
 
-        $.post("{{ url('directory-search') }}",
-            {
-                _token: '{!! csrf_token() !!}',
-                search_key: search,
-            },
-            function(data, status){
-            // alert("Data: " + data + "\nStatus: " + status);
-            // console.log("Data: " + data + "\nStatus: " + status);
-            document.getElementById("directoryData").innerHTML = data;          
-            }
-            );
-    }  
-    }
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     // Search functionality
-//     document.getElementById('searchInput').addEventListener('keyup', function () {
-//         var input, filter, table, tr, td, i, txtValue;
-//         input = document.getElementById('searchInput');
-//         filter = input.value.toUpperCase();
-//         table = document.querySelector('.table');
-//         tr = table.getElementsByTagName('tr');
-
-//         // Loop through all table rows, and hide those who don't match the search query
-//         for (i = 0; i < tr.length; i++) {
-//             td = tr[i].getElementsByTagName('td');
-//             for (var j = 0; j < td.length; j++) {
-//                 if (td[j]) {
-//                     txtValue = td[j].textContent || td[j].innerText;
-//                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//                         tr[i].style.display = '';
-//                         break;
-//                     } else {
-//                         tr[i].style.display = 'none';
-//                     }
-//                 }
+//         $.post("{{ url('directory-search') }}",
+//             {
+//                 _token: '{!! csrf_token() !!}',
+//                 search_key: search,
+//             },
+//             function(data, status){
+//             // alert("Data: " + data + "\nStatus: " + status);
+//             // console.log("Data: " + data + "\nStatus: " + status);
+//             document.getElementById("directoryData").innerHTML = data;          
 //             }
-//         }
-//     });
-//     $('#searchInput').on('keyup', function () {
-//         var filter = $(this).val().toUpperCase();
-//         $('.table tbody tr').each(function () {
-//             var rowText = $(this).text().toUpperCase();
-//             $(this).toggle(rowText.indexOf(filter) > -1);
-//         });
-//     });
-// });
+//             );
+//     }  
+//     }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        table = document.querySelector('.table');
+        tr = table.getElementsByTagName('tr');
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td');
+            for (var j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                        break;
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    });
+    $('#searchInput').on('keyup', function () {
+        var filter = $(this).val().toUpperCase();
+        $('.table tbody tr').each(function () {
+            var rowText = $(this).text().toUpperCase();
+            $(this).toggle(rowText.indexOf(filter) > -1);
+        });
+    });
+});
  
 
 function processEdit(pId)

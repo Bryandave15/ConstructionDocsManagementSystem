@@ -19,19 +19,19 @@
 <div style="display: flex; justify-content: space-around; border-bottom: 2px solid black; padding-bottom: 2px;">
     <h2 style="margin: 0; margin-right: 200px">REPORTS</h2>
     <!-- Headline "FORMS" --> 
-    <a class="btn btn-primary"  href="http://127.0.0.1:8000/report-add-form"><b>Add Report</b></a>
+    <a class="btn btn-primary"  href="/report-add-form"><b>Add Report</b></a>
         <!-- Search input field -->
     <input type="text" id="searchInput" class="form-control" placeholder="Search... "style="width: 300px;">
 </div>
 
 <div class="table-responsive">
-<table class="table table-striped" >
+<table class="table table-striped text-center" >
 <thead>
         <tr>
-            <th style="border-bottom: 2px solid black;">report_title</th>
-            <th style="border-bottom: 2px solid black;">report_type</th>
+            <th style="border-bottom: 2px solid black;">Report Title</th>
+            <th style="border-bottom: 2px solid black;">Type</th>
             <th style="border-bottom: 2px solid black;">Description</th>
-            <th style="border-bottom: 2px solid black;">created_by</th>
+            <th style="border-bottom: 2px solid black;">Created by</th>
             <th style="border-bottom: 2px solid black;">Attachment</th>
             <th style="border-bottom: 2px solid black;">Actions</th>
         </tr>

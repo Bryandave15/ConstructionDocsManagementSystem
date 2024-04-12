@@ -40,4 +40,12 @@ require __DIR__.'/route/meeting_routes.php';
 // mdirectory Routes
 require __DIR__.'/route/directory_routes.php';
 
-Route::get('/drawing-list', 'DrawingController@index');
+// inspection Routes
+require __DIR__.'/route/inspection_routes.php';
+
+// archi Routes
+require __DIR__.'/route/architectural_routes.php';
+
+// asbuilt Routes
+require __DIR__.'/route/asbuilt_routes.php';
+

@@ -17,7 +17,8 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"],
+    .form-container input[type="date"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -35,6 +36,26 @@
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
     }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        
+    }
+
+    h2 {
+        text-align : center;
+    }
+
 
     .alert {
         margin-bottom: 15px;
@@ -70,6 +91,7 @@
 @endif
 
 <div class="form-container">
+<h2> <b> Add Meeting </b></h2>
     <form action="{{ route('meeting_Save') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="meeting_title">Meeting Name:</label><br>
@@ -77,6 +99,9 @@
 
         <label for="meeting_overview">Meeting Overview</label><br>
         <input type="text" id="meeting_overview" name="meeting_overview"><br><br>
+        
+        <label for="meeting_date">Meeting Date</label><br>
+        <input type="date" id="meeting_date" name="meeting_date"><br><br>
 
         <label for="meeting_location">Location:</label><br>
         <input type="text" id="meeting_location" name="meeting_location"><br><br>
@@ -92,6 +117,7 @@
 
         <input class="btn btn-primary" type="submit" value="Submit">
     </form>
+        <button class= "btn-danger">  <a href="/meeting"> Cancel  </button>
 </div>
 
 @endsection

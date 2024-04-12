@@ -17,7 +17,7 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"], button {
         width: calc(100% - 22px); /* Adjusted width to account for padding and border */
         padding: 10px;
         margin-bottom: 15px;
@@ -38,6 +38,22 @@
 
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
+    }
+
+    .add-button {
+    display: flex;
+    justify-content: space-around; /* Add space between the buttons */
+    }  
+
+    a {
+            text-decoration: none;
+            color: white;
+        }
+    h2 {
+        text-align : center;
+    }
+    button{
+        margin: 2px
     }
 
     .alert {
@@ -74,15 +90,16 @@
 @endif
 
 <div class="container">
+<h2> <b> Update MEFPS Drawing </b></h2>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="form-container">
                 <form action="{{ route('mefps_Update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="mefps_id" value="{{ $mefpsFound->mefps_id }}">
+                    <!-- <input type="hidden" name="mefps_id" value="{{ $mefpsFound->mefps_id }}"> -->
 
                     <div class="form-group">
-                        <label for="mefps_title">Mefps Title:</label>
+                        <label for="mefps_title">Drawing Title:</label>
                         <input type="text" id="mefps_title" name="mefps_title" class="form-control" value="{{ $mefpsFound->mefps_title }}">
                     </div>
 
@@ -103,12 +120,15 @@
 
                     <div class="form-group">
                         @if (isset($mefpsFound->attachment))
-                            <img width="50" height="50" src="{{ 'http://127.0.0.1:8000/uploads/'.$mefpsFound->attachment }}" />
+                            <img width="50" height="50" src="{{ '/uploads/'.$mefpsFound->attachment }}" />
                         @endif
                         <input type="file" id="attachment" name="attachment" class="form-control-file"><br>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="add-button">
+                    <button type="submit" class=" btn-primary">Submit</button>
+                    <button class= "btn-danger">  <a href="/mefps"> Cancel  </button>
+                    </div>
                 </form> 
             </div>
         </div>

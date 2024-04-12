@@ -20,7 +20,7 @@
 <div style="display: flex; justify-content: space-around; border-bottom: 2px solid black; padding-bottom: 2px;">
     <h2 style="margin: 0; margin-right: 200px">FORMS</h2>
     <!-- Headline "FORMS" --> 
-    <a class="btn btn-primary"  href="http://127.0.0.1:8000/form-add-form"><b>Add Form</b></a>
+    <a class="btn btn-primary"  href="/form-add-form"><b>Add Form</b></a>
         <!-- Search input field -->
     <input type="text" id="searchInput" class="form-control" placeholder="Search... "style="width: 300px;">
 </div>
@@ -52,7 +52,7 @@
     </td>
     <td>
         
-        <button id="butEdit" onclick="processEdit({{ $d->form_id }})" class="btn btn-success">Edit</button>
+        <button id="butEdit" onclick="processEdit({{ $d->form_id }})" class="btn btn-success">Update</button>
         <button id="butDelete" onclick="processDelete({{ $d->form_id }})" class="btn btn-danger">Delete</button>
         <button onclick="downloadAttachment('{{ $d->attachment }}')" class="btn btn-primary">Download</button>
         

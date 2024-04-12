@@ -17,7 +17,7 @@
 
     .form-container input[type="text"],
     .form-container input[type="file"],
-    .form-container input[type="submit"] {
+    .form-container input[type="submit"], button {
         width: calc(100% - 22px); /* Adjusted width to account for padding and border */
         padding: 10px;
         margin-bottom: 15px;
@@ -38,6 +38,22 @@
 
     .form-container input[type="submit"]:hover {
         background-color: #45a049;
+    }
+
+    .add-button {
+    display: flex;
+    justify-content: space-around; /* Add space between the buttons */
+    }  
+
+    a {
+            text-decoration: none;
+            color: white;
+        }
+    h2 {
+        text-align : center;
+    }
+    button{
+        margin: 2px
     }
 
     .alert {
@@ -74,38 +90,45 @@
 @endif
 
 <div class="container">
+<h2> <b> Update Drawing </b></h2>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="form-container">
-                <form action="{{ route('form_Update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('architectural_Update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="form_id" value="{{ $formFound->form_id }}">
+                    <input type="hidden" name="architectural_id" value="{{ $architecturalFound->architectural_id }}">
 
                     <div class="form-group">
-                        <label for="form_title">form_title Title:</label>
-                        <input type="text" id="form_title" name="form_title" class="form-control" value="{{ $formFound->form_title }}">
+                        <label for="architectural_title">Drawing Title:</label>
+                        <input type="text" id="architectural_title" name="architectural_title" class="form-control" value="{{ $architecturalFound->architectural_title }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="form_type">form_type:</label>
-                        <input type="text" id="form_type" name="form_type" class="form-control" value="{{ $formFound->form_type }}">
+                        <label for="architectural_code">Code:</label>
+                        <input type="text" id="architectural_code" name="architectural_code" class="form-control" value="{{ $architecturalFound->architectural_code }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="description">description:</label>
-                        <input type="text" id="description" name="description" class="form-control" value="{{ $formFound->description }}">
+                        <label for="architectural_location">Location:</label>
+                        <input type="text" id="architectural_location" name="architectural_location" class="form-control" value="{{ $architecturalFound->architectural_location }}">
                     </div>
 
-                   
+                    <div class="form-group">
+                        <label for="trade">Trade:</label>
+                        <input type="text" id="trade" name="trade" class="form-control" value="{{ $architecturalFound->trade }}">
+                    </div>
 
                     <div class="form-group">
-                        @if (isset($formFound->attachment))
-                            <img width="50" height="50" src="{{ 'http://127.0.0.1:8000/uploads/'.$formFound->attachment }}" />
+                        @if (isset($architecturalFound->attachment))
+                            <img width="50" height="50" src="{{ '/uploads/'.$architecturalFound->attachment }}" />
                         @endif
                         <input type="file" id="attachment" name="attachment" class="form-control-file"><br>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="add-button">
+                    <button type="submit" class=" btn-primary">Submit</button>
+                    <button class= "btn-danger">  <a href="architectural"> Cancel  </button>
+                    </div>
                 </form> 
             </div>
         </div>
